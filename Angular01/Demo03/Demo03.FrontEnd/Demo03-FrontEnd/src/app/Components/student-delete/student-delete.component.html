@@ -1,0 +1,29 @@
+<div *ngIf="currentStudent!=null" class="card">
+    <div class="card-header">
+        <h2 class="text-danger">Deleting student's record</h2>
+    </div>
+    <div class="card-body" *ngIf="!deleted">
+        <div class="row">
+            <div class="col-sm-4">Id: <span class="form-control">{{currentStudent.id}}</span></div>
+            <div class="col-sm-4">Name: <span class="form-control">{{currentStudent.name}}</span></div>
+            <div class="col-sm-4">Current Grade: <span class="form-control">{{currentStudent.grade}}</span></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 offset-sm-8">Modified: {{currentStudent.modified}}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 offset-sm-8"><button class="btn btn-danger" (click)="delete()">Delete</button></div>
+        </div>
+    </div>
+    <div class="card-body" *ngIf="deleted">
+        <div class="row">
+            <div class="col-sm-4 offset-sm-4">Record's student was deleted successfully.</div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-sm-4 offset-sm-8"><button class="btn btn-secondary" routerLink="/students">Back</button></div>
+        </div>
+    </div>
+</div>
+

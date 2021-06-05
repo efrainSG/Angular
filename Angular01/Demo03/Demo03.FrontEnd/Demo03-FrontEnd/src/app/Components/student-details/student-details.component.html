@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-body" *ngIf="currentStudent && !editing">
+        <div class="row">
+            <div class="col-sm-4">Id: <span class="form-control">{{currentStudent.id}}</span></div>
+            <div class="col-sm-4">Name: <span class="form-control">{{currentStudent.name}}</span></div>
+            <div class="col-sm-4">Current Grade: <span class="form-control">{{currentStudent.grade}}</span></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 offset-sm-8">Modified: {{currentStudent.modified}}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 offset-sm-8"><button class="btn btn-secondary" (click)="setEdit()">Edit</button></div>
+        </div>
+    </div>
+    <div class="card-body" *ngIf="currentStudent && editing">
+        <div class="row">
+            <div class="col-sm-4">Id: <span class="form-control" readonly>{{currentStudent.id}}</span></div>
+            <div class="col-sm-4">Name: <input type="text" name="txtName" id="txtName" class="form-control" [(ngModel)]="currentStudent.name" placeholder="Name"></div>
+            <div class="col-sm-4">Current Grade: <span class="form-control" readonly>{{currentStudent.grade}}</span></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 offset-sm-8">Modified: {{currentStudent.modified}}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 offset-sm-8"><button class="btn btn-primary" (click)="save()">Save</button></div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-sm-4 offset-sm-8"><button class="btn btn-secondary" routerLink="/students">Back</button></div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,23 @@
+
+<div class="card">
+    <div class="card-header">
+        <h2>Create a new student</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-2">Name:</div>
+            <div class="dol-sm-4"><input type="text" id="name" name="name" [(ngModel)]="student.name" /></div>
+            <div class="col-sm-2">Id grade:</div>
+            <div class="dol-sm-4"><input type="text" id="idGrade" name="idGrade" [(ngModel)]="student.idGrade" /></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Created on:</div>
+            <div class="dol-sm-4"><input type="text" id="modified" name="modified" [(ngModel)]="student.modified" /></div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-secondary" routerLink="/students">Back</button>
+        <button class="btn btn-success" (click)="createStudent()">Save</button>
+        <button class="btn btn-outline-info" (click)="newStudent()">New</button>
+    </div>
+</div>
