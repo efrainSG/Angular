@@ -53,7 +53,7 @@ export class ProductListComponent implements OnInit {
     }
 
     onRatingClicked(message: string): void {
-
+        this.pageTitle = 'Product list: ' + message;
     }
 
     performFilter(filterby:string): IProduct[] {
