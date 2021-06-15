@@ -1,16 +1,20 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 import { IProduct } from "./product";
+import { ProductService } from "./product.service";
 
 @Component({
     selector: 'pm-products',
     templateUrl: './product-list.component.html',
     styleUrls:['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
     pageTitle: string = 'The product list';
     imageWidth: number = 50;
     imageMargin: number = 2;
     showImage: boolean = false;
+    errorMessage: string = '';
+    sub!: Subscription;
 
     private _listFilter:string = '';
     get listFilter(): string {
@@ -21,31 +25,19 @@ export class ProductListComponent implements OnInit {
         this.filteredProducts = this.performFilter(value);
     }
     filteredProducts: IProduct[] = [];
-    products: IProduct[] = [
-        {
-            "productId": 2,
-            "productName": "Garden cart",
-            "productCode": "000-0023",
-            "releaseDate": "March 18, 2021",
-            "description": "15 gallon",
-            "price": 32.99,
-            "starRating": 4.2,
-            "imageUrl": "assets/images/garden-cart.png"
-        },
-        {
-            "productId": 5,
-            "productName": "Hammer",
-            "productCode": "TBX-0048",
-            "releaseDate": "March 21, 2021",
-            "description": "Curved claw steel hammer",
-            "price": 8.9,
-            "starRating": 4.8,
-            "imageUrl": "assets/images/hammer.png"
-        }
-    ];
+    products: IProduct[] = [];
+    
+    constructor(private productService: ProductService){ }
 
     ngOnInit(): void {
-        this.listFilter = 'cart';
+        this.sub = this.productService.getProducts().subscribe({
+            next: prods => {
+                this.products = prods;
+                this.filteredProducts = this.products;
+            },
+            error: err => this.errorMessage = err
+        });
+//        
     }
 
     toggleImage():void {
@@ -60,5 +52,9 @@ export class ProductListComponent implements OnInit {
         filterby = filterby.toLowerCase();
         return this.products.filter((product: IProduct) =>
          product.productName.toLowerCase().includes(filterby));
+    }
+
+    ngOnDestroy():void{
+        this.sub.unsubscribe();
     }
 }
