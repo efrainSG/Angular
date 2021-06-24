@@ -1,0 +1,24 @@
+<div class="card">
+    <h2 class="card-header">{{pageTitle}} works! <small *ngIf="projectsFilterString"> - {{projectsFilterString}}</small></h2>
+    <div *ngIf="filteredProjects" class="card-body">
+        <div class="row">
+            <div class="col-ms-12">
+                <input type="text" class="form-control" placeholder="type part of project's name to filter." [(ngModel)]='projectsFilterString' />
+            </div>
+        </div>
+        <div class="row" *ngFor="let project of filteredProjects">
+            <div class="col-md-1" >
+                <a class="btn btn-outline-primary btn-sm"> {{project.ProjectId}} </a>
+            </div>
+            <div class="col-md-8" >
+                {{project.Name}}
+            </div>
+            <div class="col-md-1" >
+                {{project.TypeId}}
+            </div>
+            <div class="col-md-2" >
+                {{project.Ranking}}
+            </div>
+        </div>
+    </div>
+</div>
