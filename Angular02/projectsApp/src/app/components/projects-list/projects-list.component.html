@@ -2,7 +2,7 @@
     <h2 class="card-header">{{pageTitle}} works! <small *ngIf="projectsFilterString"> - {{projectsFilterString}}</small></h2>
     <div *ngIf="filteredProjects" class="card-body">
         <div class="row">
-            <div class="col-ms-12">
+            <div class="col-md-12">
                 <input type="text" class="form-control" placeholder="type part of project's name to filter." [(ngModel)]='projectsFilterString' />
             </div>
         </div>

@@ -1,1 +1,38 @@
-<p>project-create works!</p>
+<div class="card">
+    <h2 class="card-header">{{pageTitle}} works!</h2>
+    <div class="row">
+        <div class="col-md-3 offset-md-1">
+            <label for="txtName">Name</label>
+        </div>
+        <div class="col-md-7">
+            <input  id="txtName" type="text" class="form-control"
+                    placeholder="Project's name."
+                    [(ngModel)]='NewProject.Name' />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 offset-md-1">
+            <label for="txtType">Type Id</label>
+        </div>
+        <div class="col-md-7">
+            <input  id="txtType" type="number" class="form-control"
+                    placeholder="Project's type id."
+                    [(ngModel)]='NewProject.TypeId' />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 offset-md-1">
+            <label for="txtRanking">Ranking</label>
+        </div>
+        <div class="col-md-7">
+            <input  id="txtRanking" type="number" class="form-control"
+                    placeholder="Project's ranking."
+                    [(ngModel)]='NewProject.Ranking' />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 offset-md-6">
+            <button type="button" class="btn btn-primary" (click)='save()'>Save</button>
+        </div>
+    </div>
+</div>
