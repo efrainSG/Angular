@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-header">
+        <h2>{{pageTitle}}</h2>
+        <input type="text" [(ngModel)]='Filter' placeholder="full or partial name" class="form-control"/>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Is favorite</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contact of _filtered">
+                    <td><a [routerLink]="['/detail', contact.id]" class="btn btn-sm btn-success">{{contact.id}}</a></td>
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.address}}</td>
+                    <td>{{contact.phone}}</td>
+                    <td *ngIf="contact.favorite">Yes</td>
+                    <td *ngIf="!contact.favorite">No</td>
+                </tr>
+            </tbody>
+        </table>
+            </div>
+    <div class="card-footer">
+
+    </div>
+</div>
+

@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-header">
+        <h2>{{pageTitle}}</h2>
+    </div>
+    <div class="card-body">
+        <div *ngIf="contact">
+            <p>{{contact.id}}</p>
+            <p>{{contact.name}}</p>
+            <p>{{contact.address}}</p>
+            <p>{{contact.phone}}</p>
+            <p *ngIf='contact.favorite'>Is favorite :-)</p>
+            <p *ngIf='!contact.favorite'>Is not favorite :-(</p>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a (click)="onBack()" class="btn btn-outline-primary">Back</a>
+        <a (click)="delete()" class="btn btn-outline-danger">Delete</a>
+    </div>
+</div>

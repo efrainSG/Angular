@@ -1,0 +1,51 @@
+<div class="card">
+    <div class="card-header">
+        <h2>{{pageTitle}}</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" [(ngModel)]='ContactData.name' placeholder="Name" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" [(ngModel)]='ContactData.address' placeholder="Address" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="tel" [(ngModel)]='ContactData.phone' placeholder="Phone number" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="checkbox" id="chkFavorite" [(ngModel)]='ContactData.favorite' />
+                        <label for="chkFavorite" >Favorite</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" (click)='save()' class="btn btn-outline-primary">Save</button>
+                        <button type="button" (click)='new()' class="btn btn-outline-warning">Clear</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div *ngIf="savedContact">
+                    <p>{{savedContact.id}}</p>
+                    <p>{{savedContact.name}}</p>
+                    <p>{{savedContact.address}}</p>
+                    <p>{{savedContact.phone}}</p>
+                    <p *ngIf='savedContact.favorite'>Is favorite :-)</p>
+                    <p *ngIf='!savedContact.favorite'>Is not favorite :-(</p>
+                </div>                        
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+
+    </div>
+</div>

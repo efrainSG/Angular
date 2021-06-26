@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Project } from 'src/app/models/project';
-
+import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
     selector: 'prj-projects-list',
@@ -24,66 +24,32 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
         this.filterStr = value;
         this.filteredProjects = this.performFilter(value);
     }
-  projects: Project[] = [
-    {
-        "ProjectId":1000,
-        "Name":"project 1000",
-        "TypeId":1,
-        "LastModified":"01-06-2021",
-        "Ranking": 4
-    },
-    {
-        "ProjectId":2000,
-        "Name":"project 2000",
-        "TypeId":1,
-        "LastModified":"01-06-2021",
-        "Ranking": 4
-    },
-    {
-        "ProjectId":3000,
-        "Name":"project 3000",
-        "TypeId":1,
-        "LastModified":"01-06-2021",
-        "Ranking": 4
-    },
-    {
-        "ProjectId":4000,
-        "Name":"project 4000",
-        "TypeId":1,
-        "LastModified":"01-06-2021",
-        "Ranking": 4
-    },
-    {
-        "ProjectId":5000,
-        "Name":"project 5000",
-        "TypeId":1,
-        "LastModified":"01-06-2021",
-        "Ranking": 4
-    },
-    {
-        "ProjectId":6000,
-        "Name":"project 6000",
-        "TypeId":1,
-        "LastModified":"01-06-2021",
-        "Ranking": 3
-    }
-  ];
   filteredProjects: Project[] = [];
+  projects: Project[] = [];
 
-  constructor() { }
+  constructor(private service:ProjectsService) { }
 
   ngOnInit(): void {
-    this.filteredProjects = this.projects;
-  }
+    this.sub = this.service.getProjects().subscribe({
+        next: p => {
+            this.projects = p;
+            this.filteredProjects = this.performFilter('');
+            console.log('All', this.projects);
+            console.log('Filtered', this.filteredProjects);
+        },
+        error: e => console.error(e)
+    });
+    console.log('All outside', this.filteredProjects);
+   }
 
   performFilter(theFilter:string):Project[] {
     theFilter = theFilter.toLowerCase();
     return this.projects.filter((project:Project)=>
-      project.Name.includes(theFilter));
+      project.Name.toLowerCase().includes(theFilter));
   }
 
   ngOnDestroy(): void {
-
+    this.sub.unsubscribe();
   }
 
 }
