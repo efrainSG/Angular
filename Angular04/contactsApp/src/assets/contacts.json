@@ -1,0 +1,51 @@
+[
+    {
+        "id":1,
+        "name":"Efra",
+        "address":"street 1",
+        "phone":"000",
+        "favorite":false
+    },
+    {
+        "id":2,
+        "name":"May",
+        "address":"street 1",
+        "phone":"000",
+        "favorite":true
+    },
+    {
+        "id":3,
+        "name":"Juan",
+        "address":"street 1",
+        "phone":"000",
+        "favorite":true
+    },
+    {
+        "id":4,
+        "name":"Josh",
+        "address":"street 1",
+        "phone":"000",
+        "favorite":true
+    },
+    {
+        "id":5,
+        "name":"Yesa",
+        "address":"street 1",
+        "phone":"000",
+        "favorite":true
+    },
+    {
+        "id":6,
+        "name":"Casca",
+        "address":"street 1",
+        "phone":"000",
+        "favorite":false
+    },
+    {
+        "id":7,
+        "name":"Moon",
+        "address":"street 1",
+        "phone":"000",
+        "favorite":false
+    }
+]

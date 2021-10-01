@@ -1,0 +1,21 @@
+<h3>the servers works!</h3>
+<label>Server name</label>
+<input type="text" class="form-control"
+(input)="onUpdateName($event)"
+>
+<input type="text" class="form-control"
+[(ngModel)]="serverName"
+>
+<p>{{ serverName }}</p>
+<button class="btn btn-primary" [disabled]="!allowNewServer"
+(click)="onCreateServer()">Add server</button>
+<!-- <p [innerText]="serverCreationStatus"></p> -->
+<p>Server was created, server name is {{ serverName }}</p>
+<app-server></app-server>
+<app-server></app-server>
+
+<hr>
+<label>User name</label>
+<input type="text" class="form-control" [(ngModel)]="userName" (input)="verifyEnable($event)">
+<p>{{ userName }}</p>
+<button class="btn btn-primary" [disabled]="mustDisable" (click)="onSetUserName()">Set username</button>

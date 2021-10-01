@@ -10,13 +10,15 @@ import { ContactListComponent } from './Components/contact-list/contact-list.com
 import { ContactDetailComponent } from './Components/contact-detail/contact-detail.component';
 import { FormsModule } from '@angular/forms';
 import { ContactGuard } from './Components/Guards/contact.guard';
+import { FullFormComponent } from './Components/full-form/full-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactCreateComponent,
     ContactListComponent,
-    ContactDetailComponent
+    ContactDetailComponent,
+    FullFormComponent
   ],
   imports: [
     BrowserModule,
@@ -27,9 +29,10 @@ import { ContactGuard } from './Components/Guards/contact.guard';
       { path: 'welcome', redirectTo: '', pathMatch: 'full' },
       { path: 'list', component: ContactListComponent },
       { path: 'create', component: ContactCreateComponent },
+      { path: 'form', component: FullFormComponent },
       { path: 'detail/:id',
-        component: ContactDetailComponent,
-        canActivate: [ContactGuard] }
+      component: ContactDetailComponent,
+      canActivate: [ContactGuard] }
     ])
   ],
   providers: [],

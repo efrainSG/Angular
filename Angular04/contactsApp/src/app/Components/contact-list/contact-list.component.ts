@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IContact } from 'src/app/Models/icontact';
+import { ContactService } from 'src/app/Services/contact.service';
 
 @Component({
   selector: 'cont-contact-list',
@@ -8,15 +9,7 @@ import { IContact } from 'src/app/Models/icontact';
 })
 export class ContactListComponent implements OnInit, OnDestroy {
   pageTitle: string = 'Contacts list';
-   _list: IContact[] = [
-    {id:1, name:"Efra",address:"street 1", phone:"000", favorite:false },
-    {id:2, name:"May",address:"street 1", phone:"000", favorite:true },
-    {id:3, name:"Juan",address:"street 1", phone:"000", favorite:true },
-    {id:4, name:"Josh",address:"street 1", phone:"000", favorite:true },
-    {id:5, name:"Yesa",address:"street 1", phone:"000", favorite:true },
-    {id:6, name:"Casca",address:"street 1", phone:"000", favorite:false },
-    {id:7, name:"Moon",address:"street 1", phone:"000", favorite:false },
-    ];
+   _list: IContact[] = [];
    _filtered: IContact[] = [];
    _filterString:string = '';
    get Filter():string {
@@ -27,10 +20,16 @@ export class ContactListComponent implements OnInit, OnDestroy {
      this._filtered = this.performFilter(this._filterString);
    }
 
-  constructor() { }
+  constructor(private service: ContactService) { }
 
   ngOnInit(): void {
-    this._filtered = this.performFilter('');
+    this.service.getContacts().subscribe({
+      next: conts => {
+        this._list = conts;
+        this._filtered = this.performFilter('');
+      },
+      error: err => console.error(err)
+    });
   }
 
   performFilter(filterBy:string): IContact[] {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IContact } from 'src/app/Models/icontact';
+import { ContactService } from 'src/app/Services/contact.service';
 
 @Component({
   selector: 'cont-contact-create',
@@ -21,7 +22,7 @@ export class ContactCreateComponent implements OnInit {
   set ContactData(value:IContact) {
     this._contact = value;
   }
-  constructor() { }
+  constructor(private http: ContactService) { }
 
   ngOnInit(): void {
     this.new();
@@ -32,9 +33,15 @@ export class ContactCreateComponent implements OnInit {
   }
 
   save(): void {
-    this._contact.id = 1;
-    this._savedContact = this._contact;
-    this.new();
+    this.http.postContact(this._contact)
+    .subscribe({
+      next: res => {
+        console.log(res)
+        this._savedContact = this._contact;
+        this.new();
+          },
+      error: e => console.error(e)      
+    });
   }
 
 }
