@@ -1,1 +1,6 @@
-<p>enemigos-list works!</p>
+<h2>Lista de enemigos</h2>
+<div *ngFor="let enemigo of enemigos">
+    <rpg-enemigo [id]="enemigo.id" [nombre]="enemigo.nombre" [clase]="enemigo.clase" ></rpg-enemigo>
+</div>
+
+
