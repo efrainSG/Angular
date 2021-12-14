@@ -9,8 +9,13 @@ export class ServersComponent implements OnInit {
   allowNewServer = false;
   mustDisable = true;
   serverCreationStatus = 'No server was created.';
+  serverCreated = false;
   serverName = 'Test Name';
   userName = '';
+  servers = ['TestServer', 'TestServer2'];
+  clicksDisplay = [];
+  displayText = false;
+
   constructor() {
     setTimeout(() => {
       this.allowNewServer = true;
@@ -18,7 +23,10 @@ export class ServersComponent implements OnInit {
    }
 
    onCreateServer(){
+     this.serverCreated = true;
+     this.servers.push(this.serverName);
      this.serverCreationStatus = 'Server was created. Its name is ' + this.serverName;
+
    }
 
   ngOnInit(): void {
@@ -36,4 +44,8 @@ export class ServersComponent implements OnInit {
     this.mustDisable = (<HTMLInputElement>event.target).value.length < 3;
   }
 
+  toggleDisplay() {
+    this.displayText = !this.displayText;
+    this.clicksDisplay.push({id: this.clicksDisplay.length, Display: this.displayText});
+  }
 }

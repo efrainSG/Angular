@@ -1,0 +1,6 @@
+<h2>Lista de miembros</h2>
+<p>Estoy pasando desde un vector de elementos especificado en formato JSON hacia el componente hijo.<br />
+    Cada atributo del vector lo paso como una propiedad de entrada al componente.</p>
+<div *ngFor="let integrante of miembros">
+    <rpg-miembro [id]="integrante.id" [nombre]="integrante.nombre" [clase]="integrante.clase" ></rpg-miembro>
+</div>

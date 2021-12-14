@@ -1,0 +1,86 @@
+<div class="card">
+    <div class="card-header">
+        <h3>Miembro</h3>
+    </div>
+    <div class="card-body">
+        <em>Recibo desde el componente padre los valores de: nombre, id y clase; entonces ejecuto onNgInit() para inicializar el resto de las propiedades</em>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-4">Id: </div><div class="col-md-8">{{this.id}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">Nombre: </div><div class="col-md-8">{{this.nombre}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">Clase: </div><div class="col-md-8">{{this.clase}}</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-3">
+                    Experiencia: 
+                </div>
+                <div class="col-md-3">
+                    {{this.experiencia}}
+                </div>
+                <div class="col-md-3">
+                    Nivel:
+                </div>
+                <div class="col-md-3">
+                    {{this.nivel}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    Salud:
+                </div>
+                <div class="col-md-3">
+                    {{this.salud}}
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Ataque:</div>
+                <div class="col-md-3">{{this.ataque}}</div>
+                <div class="col-md-3">Certeza:</div>
+                <div class="col-md-3">{{this.certeza}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Defensa:</div>
+                <div class="col-md-3">{{this.defensa}}</div>
+                <div class="col-md-3">Evasión:</div>
+                <div class="col-md-3">{{this.evasion}}</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <rpg-arma [nombre]="arma.nombre" [tipo]="arma.tipo"></rpg-arma>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let proteccion of armaduras">
+            <rpg-armadura [nombre]="proteccion.nombre" [tipo]="proteccion.tipo"></rpg-armadura>
+        </div>
+    </div>
+</div>
+
+<button (click)="this.addExperiencia(10)">Más experiencia</button><br />
+<em>Agrego un cuchillo especificando solo el tipo en el método invocado. Luego mando a llamar <strong>ngOnChanges()</strong> que actualiza los valores de otras propiedades, de forma que pueda retornarlas a este componente y actualizar a mi integrante.</em><br />
+Invoco los métodos en los botones con el evento <code>(click)</code> definido al que le paso como valor la función a utilizar con sus parámetros.<br />
+<button class="btn btn-secondary" (click)="this.addArma('cuchillo')">Agrega cuchillo</button>
+<button class="btn btn-secondary" (click)="this.addArma('espada')">Agrega espada</button>
+<button class="btn btn-secondary" (click)="this.addArma('mazo')">Agrega mazo</button>
+<button class="btn btn-secondary" (click)="this.addArma('hacha')">Agrega hacha</button>
+<button class="btn btn-secondary" (click)="this.addArma('bastón')">Agrega bastón</button>
+<br />
+<button class="btn btn-warning" (click)="this.addArmadura('escudo')">Agrega escudo</button>
+<button class="btn btn-warning" (click)="this.addArmadura('peto')">Agrega peto</button>
+<button class="btn btn-warning" (click)="this.addArmadura('casco')">Agrega casco</button>
+<button class="btn btn-warning" (click)="this.addArmadura('guantelete')">Agrega guantelete</button>
+<button class="btn btn-warning" (click)="this.addArmadura('capa')">Agrega capa</button>

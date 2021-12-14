@@ -1,5 +1,9 @@
 <h4>server works!</h4>
-<p>{{ 'Server' }} with Id {{ serverId }} is {{ getServerStatus() }}</p>
+<p [ngStyle]='{backgroundColor: getColor()}'
+[ngClass]="{online: getServerStatus() === 'online'}"
+>
+    {{ 'Server' }} with Id {{ serverId }} is {{ getServerStatus() }}
+</p>
 <div class="row">
     <div class="col-xs-6">
       <div class="app-success-alert"></div>
